@@ -275,20 +275,9 @@ public class TerminalGUI implements Listener {
     private void applySorting() {
         switch (sortMode) {
             case CREATIVE:
-                try {
-                    // Sort by creative category and then ordinal
-                    allItems.sort(
-                        Comparator
-                            .comparing(
-                                (StoredItem i) -> i.itemStack().getType().getCreativeCategory(),
-                                Comparator.nullsLast(Comparator.comparingInt(Enum::ordinal))
-                            )
-                            .thenComparingInt(i -> i.itemStack().getType().ordinal())
-                    );
-                } catch (Exception e) {
-                    // Fallback to ordinal sorting if creative category access fails
-                    allItems.sort(Comparator.comparingInt(item -> item.itemStack().getType().ordinal()));
-                }
+                // Sort using the order set in creative_menu.txt
+                allItems.sort(Comparator.comparingInt(item -> 
+                    plugin.getConfigManager().getCreativeMenuOrder(item.itemStack().getType())));
                 break;
             case QUANTITY:
                 // Sort by quantity (descending) - most items first
