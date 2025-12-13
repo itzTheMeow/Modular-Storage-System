@@ -365,6 +365,7 @@ gui:
       sort-mode: "Sort: {mode}"
       sort-mode-quantity: "Sort: quantity (most items first)"
       sort-mode-alphabetical: "Sort: alphabetical (A-Z)"
+      sort-mode-creative: "Sort: creative menu"
       showing-range: "Showing: {start}-{end} of {total}"
       total-items: "{type} Items: {count}"
       total-items-filtered: "Filtered Items: {count}"
